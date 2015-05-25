@@ -72,7 +72,7 @@ public interface MyComposer { }
 
 Consuming you Composer and your injected Traits.
 ```java
-Mara_MyComposer myComposer =new Mara_MyComposer.Builder().build();
+Mara_MyComposer myComposer = new Mara_MyComposer.Builder().build();
 myComposer.MyMethod();
 ```
 
