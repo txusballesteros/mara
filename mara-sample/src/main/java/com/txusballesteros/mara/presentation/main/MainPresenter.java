@@ -26,6 +26,9 @@ package com.txusballesteros.mara.presentation.main;
 
 import android.os.Handler;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class MainPresenter {
     private View view;
 
@@ -37,17 +40,25 @@ public class MainPresenter {
         run();
     }
 
+    private void renderData() {
+        Collection<String> data = new ArrayList<>();
+        data.add("Mara");
+        view.renderList(data);
+    }
+
     public void run() {
         view.showLoading();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                renderData();
                 view.hideLoading();
             }
-        }, 3000);
+        }, 1000);
     }
 
     public interface View {
+        void renderList(Collection<String> data);
         void showLoading();
         void hideLoading();
     }

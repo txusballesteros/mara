@@ -36,20 +36,23 @@ import com.txusballesteros.mara.Trait;
 @Trait
 public class LoadingTrait implements Initializable {
     private Context context;
-    private int rootViewResourceId;
+    private int placeHolderResourceId;
     private View loadingView;
 
-    public LoadingTrait(Context context, int rootViewResourceId) {
+    public void setLoadingPlaceHolder(int placeHolderResourceId) {
+        this.placeHolderResourceId = placeHolderResourceId;
+    }
+
+    public LoadingTrait(Context context) {
         this.context = context;
-        this.rootViewResourceId = rootViewResourceId;
     }
 
     @Override
     public void initialize() {
-        ViewGroup rootView = (ViewGroup)((Activity)context).findViewById(rootViewResourceId);
-        loadingView = LayoutInflater.from(context).inflate(R.layout.trait_loading, rootView, false);
+        ViewGroup holderView = (ViewGroup)((Activity)context).findViewById(placeHolderResourceId);
+        loadingView = LayoutInflater.from(context).inflate(R.layout.trait_loading, holderView, false);
         loadingView.setVisibility(View.GONE);
-        rootView.addView(loadingView, 0);
+        holderView.addView(loadingView);
     }
 
     public void showLoading() {

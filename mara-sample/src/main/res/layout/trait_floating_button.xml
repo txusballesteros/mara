@@ -31,13 +31,20 @@
     android:paddingRight="30dp"
     android:paddingBottom="30dp">
 
-    <ImageButton
-        android:id="@+id/floatingButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
-        android:src="@drawable/plus_button"
-        android:tint="@color/brandTextColor"
-        android:background="@drawable/floating_button_background" />
+        android:background="@drawable/floating_button_decorator">
 
+        <ImageButton
+            android:id="@+id/floatingButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/plus_button"
+            android:tint="@color/brandTextColor"
+            android:background="@drawable/floating_button_background" />
+    </FrameLayout>
 </FrameLayout>

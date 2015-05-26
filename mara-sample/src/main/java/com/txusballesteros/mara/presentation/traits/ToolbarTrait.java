@@ -36,24 +36,26 @@ import com.txusballesteros.mara.Trait;
 @Trait
 public class ToolbarTrait implements Initializable {
     private Context context;
-    private int rootViewResourceId;
+    private int placeHolderResourceId;
     private Toolbar toolbar;
 
-    public ToolbarTrait(Context context, int rootViewResourceId) {
+    public ToolbarTrait(Context context) {
         this.context = context;
-        this.rootViewResourceId = rootViewResourceId;
+    }
+
+    public void setToolbarPlaceHolder(int placeHolderResourceId) {
+        this.placeHolderResourceId = placeHolderResourceId;
     }
 
     @Override
     public void initialize() {
         if (context instanceof AppCompatActivity) {
             AppCompatActivity rootActivity = (AppCompatActivity)context;
-            final ViewGroup rootView = (ViewGroup)rootActivity.findViewById(rootViewResourceId);
+            final ViewGroup holderView = (ViewGroup)rootActivity.findViewById(placeHolderResourceId);
             toolbar = (Toolbar)LayoutInflater
-                                    .from(context).inflate(R.layout.trait_toolbar, rootView, false);
-            rootView.addView(toolbar);
+                                    .from(context).inflate(R.layout.trait_toolbar, holderView, false);
+            holderView.addView(toolbar);
             rootActivity.setSupportActionBar(toolbar);
         }
     }
-
 }

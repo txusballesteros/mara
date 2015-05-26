@@ -24,19 +24,25 @@
  */
 package com.txusballesteros.mara.presentation.traits;
 
+import android.animation.TimeInterpolator;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 
 import com.txusballesteros.mara.R;
 import com.txusballesteros.mara.Trait;
 
 @Trait
 public class FloatingButtonTrait implements Initializable {
-    private final Context context;
-    private final int rootViewResourceId;
+    private final static int FLOATING_BUTTON_TOP_Y = 0;
+    private final static int FLOATING_BUTTON_ANIMATION_DURATION = 400;
+    private Context context;
+    private int placeHolderResourceId;
+    private View floatingButtonView;
     private OnFlaotingButtonClickListener clickListener;
 
     public interface OnFlaotingButtonClickListener {
@@ -47,16 +53,35 @@ public class FloatingButtonTrait implements Initializable {
         this.clickListener = listener;
     }
 
-    public FloatingButtonTrait(Context context, int rootViewResourceId) {
+    public FloatingButtonTrait(Context context) {
         this.context = context;
-        this.rootViewResourceId = rootViewResourceId;
+    }
+
+    public void setFloatingButtonPlaceHolder(int  placeHolderResourceId) {
+        this.placeHolderResourceId = placeHolderResourceId;
+    }
+
+    public void hideFloatingButton() {
+        playAnimation(floatingButtonView.getMeasuredHeight(), new AccelerateInterpolator());
+    }
+
+    public void showFloatingButton() {
+        playAnimation(FLOATING_BUTTON_TOP_Y, new DecelerateInterpolator());
+    }
+
+    private void playAnimation(int newPosition, TimeInterpolator interpolator) {
+        floatingButtonView.animate()
+                .y(newPosition)
+                .setDuration(FLOATING_BUTTON_ANIMATION_DURATION)
+                .setInterpolator(interpolator)
+                .start();
     }
 
     @Override
     public void initialize() {
-        ViewGroup rootView = (ViewGroup)((Activity)context).findViewById(rootViewResourceId);
-        View floatingButtonView = LayoutInflater.from(context).inflate(R.layout.trait_floating_button, rootView, false);
-        rootView.addView(floatingButtonView, 0);
+        final ViewGroup holderView = (ViewGroup)((Activity)context).findViewById(placeHolderResourceId);
+        floatingButtonView = LayoutInflater.from(context).inflate(R.layout.trait_floating_button, holderView, false);
+        holderView.addView(floatingButtonView);
         floatingButtonView.findViewById(R.id.floatingButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -41,7 +41,7 @@ public class DetailTraitBuilder extends TraitBuilder {
     @Override
     protected Collection<Object> onPrepareTraits() {
         Collection<Object> result = new ArrayList<>();
-        result.add(new LoadingTrait(context, R.id.rootView));
+        result.add(new LoadingTrait(context));
         return result;
     }
 }

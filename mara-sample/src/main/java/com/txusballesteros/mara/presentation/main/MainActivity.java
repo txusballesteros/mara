@@ -25,21 +25,26 @@
 package com.txusballesteros.mara.presentation.main;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.txusballesteros.mara.R;
 import com.txusballesteros.mara.presentation.BaseActivity;
 import com.txusballesteros.mara.presentation.traits.FloatingButtonTrait;
 
+import java.util.Collection;
+
 public class MainActivity extends BaseActivity implements MainPresenter.View {
     private Mara_MainActivityComposer composer;
     private MainPresenter presenter;
+    private RecyclerView list;
+    private MainListAdapter adapter;
 
     public MainActivity() {
         presenter = new MainPresenter(this);
         composer = new Mara_MainActivityComposer.Builder()
                                 .setContext(this)
-                                .setRootViewResourceId(R.id.rootView)
                                 .build();
     }
 
@@ -48,10 +53,21 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configureTraitsComposer();
+        configureList();
         presenter.onViewCreated();
     }
 
+    private void configureList() {
+        adapter = new MainListAdapter();
+        list = (RecyclerView)findViewById(R.id.list);
+        list.setLayoutManager(new LinearLayoutManager(this));
+        list.setAdapter(adapter);
+    }
+
     private void configureTraitsComposer() {
+        composer.setToolbarPlaceHolder(R.id.toolbar_place_holder);
+        composer.setLoadingPlaceHolder(R.id.loading_place_holder);
+        composer.setFloatingButtonPlaceHolder(R.id.floating_button_place_holder);
         composer.setOnFlaotingButtonClickListener(new FloatingButtonTrait.OnFlaotingButtonClickListener() {
             @Override
             public void onFloatingButtonClick() {
@@ -62,12 +78,19 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     }
 
     @Override
+    public void renderList(Collection<String> data) {
+        adapter.addAll(data);
+    }
+
+    @Override
     public void showLoading() {
         composer.showLoading();
+        composer.hideFloatingButton();
     }
 
     @Override
     public void hideLoading() {
         composer.hideLoading();
+        composer.showFloatingButton();
     }
 }
