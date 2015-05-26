@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+/*
  * Copyright Txus Ballesteros 2015 (@txusballesteros)
  *
  * This file is part of some open source application.
@@ -22,7 +21,27 @@
  * under the License.
  *
  * Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
--->
-<resources>
+ */
+package com.txusballesteros.mara.presentation.detail;
 
-</resources>
+import java.util.ArrayList;
+import java.util.Collection;
+import android.content.Context;
+import com.txusballesteros.mara.R;
+import com.txusballesteros.mara.TraitBuilder;
+import com.txusballesteros.mara.presentation.traits.LoadingTrait;
+
+public class DetailTraitBuilder extends TraitBuilder {
+    private Context context;
+
+    public DetailTraitBuilder(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    protected Collection<Object> onPrepareTraits() {
+        Collection<Object> result = new ArrayList<>();
+        result.add(new LoadingTrait(context, R.id.rootView));
+        return result;
+    }
+}

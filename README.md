@@ -77,6 +77,7 @@ myComposer.MyMethod();
 ```
 
 ## Constructor Parameters
+
 If your traits has constructor parameters, don't worry, Mara provides automatically
 setters into the composer builder class to allow set this values. Please see the example below.
 
@@ -107,13 +108,104 @@ public interface MyComposer { }
 ```java
 public class MyApp {
     public void onCreate() {
-        Mara_MyComposer = new MyComposer.Builder()
-                                    .setContext(...) // This setter has been mapped
-                                    .build();        // to your constructor parameter automatically.
+        Mara_MyComposer myComposer = new MyComposer.Builder()
+                                        .setContext(...) // This setter has been mapped
+                                        .build();        // to your constructor parameter automatically.
     }
 }
 ```
 
+## Mixing Traits
+
+Imagine that you have two or more traits with one or more methods with the same signature. Mara
+can solve that stage doing method mixing. When you add some traits to a composer and these have
+this condition, the compiler only generate a method and call automatically to all trait with
+this signature. Please see the example below.
+
+
+```java
+@Trait
+public class MyFirstTrait {
+    public void MyMethod() {
+        ...
+    }
+    ...
+}
+
+@Trait
+public class MySecondTrait {
+    public void MyMethod() {
+        ...
+    }
+    ...
+}
+```
+
+```java
+@TraitComposer(
+    traits = {
+            MyFirstTrait.class,
+            MySecondTrait.class,
+            ...
+    }
+)
+public interface MyComposer { }
+```
+
+```java
+public class MyApp {
+    public void onCreate() {
+        Mara_MyComposer myComposer = new MyComposer.Builder().build();
+        myComposer.MyMethod();
+    }
+}
+```
+
+If you want to call a method of an specific trait, you can do it. Please see the example below.
+
+```java
+public class MyApp {
+    public void onCreate() {
+        Mara_MyComposer myComposer = new MyComposer.Builder().build();
+        myComposer.get(MyFirstTrait.class).MyMethod();
+    }
+}
+```
+
+## Customizing Traits Builders
+
+In many cases it's possible you will need customize the instantiation of your traits,
+for example to be integrated with third party libraries. Well, don't worry because you
+can create your own TraitBuilder. Please see the example below.
+
+```java
+public class MyTraitBuilder extends TraitBuilder {
+    private Context context;
+
+    public MyTraitBuilder(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    protected Collection<Object> onPrepareTraits() {
+        Collection<Object> result = new ArrayList<>();
+        result.add(new MyFirstTrait(context));
+        return result;
+    }
+}
+```
+
+```java
+public class MyApp {
+    public void onCreate() {
+        MyTraitBuilder myTraitBuilder = new MyTraitBuilder(this);
+        Mara_MyComposer myComposer = new MyComposer.Builder()
+                                            .setBuilder(myTraitBuilder)
+                                            .build();
+        ...
+    }
+}
+```
 
 ## License
 

@@ -24,5 +24,10 @@
  * Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
 -->
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/brandColor</item>
+        <item name="colorPrimaryDark">@color/brandColorDark</item>
+        <item name="android:textColorPrimary">@color/brandTextColor</item>
+        <item name="android:navigationBarColor">@color/brandColorDark</item>
+    </style>
 </resources>

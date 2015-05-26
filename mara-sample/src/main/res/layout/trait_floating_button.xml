@@ -37,6 +37,7 @@
         android:layout_height="60dp"
         android:layout_gravity="right|bottom"
         android:src="@drawable/plus_button"
+        android:tint="@color/brandTextColor"
         android:background="@drawable/floating_button_background" />
 
 </FrameLayout>

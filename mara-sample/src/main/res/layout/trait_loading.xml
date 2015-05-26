@@ -9,6 +9,9 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/brandColor"
+        android:indeterminateTintMode="src_in"
         android:layout_gravity="center" />
 
 </FrameLayout>

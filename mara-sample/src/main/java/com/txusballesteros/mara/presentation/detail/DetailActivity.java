@@ -34,8 +34,7 @@ public class DetailActivity extends BaseActivity implements DetailPresenter.View
 
     public DetailActivity() {
         composer = new Mara_DetailActivityComposer.Builder()
-                            .setContext(this)
-                            .setRootViewResourceId(R.id.rootView)
+                            .setBuilder(new DetailTraitBuilder(this))
                             .build();
         presenter = new DetailPresenter(this);
     }

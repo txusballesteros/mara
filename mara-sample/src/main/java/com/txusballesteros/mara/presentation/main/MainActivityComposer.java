@@ -27,11 +27,13 @@ package com.txusballesteros.mara.presentation.main;
 import com.txusballesteros.mara.TraitComposer;
 import com.txusballesteros.mara.presentation.traits.FloatingButtonTrait;
 import com.txusballesteros.mara.presentation.traits.LoadingTrait;
+import com.txusballesteros.mara.presentation.traits.ToolbarTrait;
 
 @TraitComposer(
     traits = {
             LoadingTrait.class,
-            FloatingButtonTrait.class
+            FloatingButtonTrait.class,
+            ToolbarTrait.class
     }
 )
 public interface MainActivityComposer { }

@@ -34,6 +34,10 @@ public class MainPresenter {
     }
 
     public void onViewCreated() {
+        run();
+    }
+
+    public void run() {
         view.showLoading();
         new Handler().postDelayed(new Runnable() {
             @Override

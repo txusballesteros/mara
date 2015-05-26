@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
         composer.setOnFlaotingButtonClickListener(new FloatingButtonTrait.OnFlaotingButtonClickListener() {
             @Override
             public void onFloatingButtonClick() {
-                Toast.makeText(MainActivity.this, "Hello World!!!", Toast.LENGTH_SHORT).show();
+                presenter.run();
             }
         });
         composer.initialize();

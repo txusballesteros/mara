@@ -24,6 +24,5 @@
  * Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
 -->
 <resources>
-    <string name="app_name">Mara</string>
-    <string name="title_activity_main">Mara Sample</string>
+    <string name="app_name">Mara Sample</string>
 </resources>
