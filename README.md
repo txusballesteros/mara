@@ -7,13 +7,13 @@ Mara is a library to provide traits or composition capabilities to your Java pro
 
 But at first place allow me tell who's Mara. Mara is my little princess, she's the first of my two sons and this library is dedicated to she. I love you my princess.
 
+## Last Version
+
+[ ![Download](https://api.bintray.com/packages/txusballesteros/maven/mara/images/download.svg) ](https://bintray.com/txusballesteros/maven/mara/_latestVersion)
+
 ## Why?
 
 Why I do this library, many times I think about how I can do reusable components for my projects and how it can be isolated from all of the rest. A month ago someone show me Kotlin, a language created by JetBrains and based 100% on JVM. And I thought how I can migrate the Traits capability from Kotlin to Java. The answer to the question is this library.
-
-## Version
-
-[ ![Download](https://api.bintray.com/packages/txusballesteros/maven/mara/images/download.svg) ](https://bintray.com/txusballesteros/maven/mara/_latestVersion)
 
 ## How to use
 
@@ -75,6 +75,59 @@ Consuming you Composer and your injected Traits.
 Mara_MyComposer myComposer = new Mara_MyComposer.Builder().build();
 myComposer.MyMethod();
 ```
+
+### Constructor Parameters
+If your traits has constructor parameters, don't worry, Mara provides automatically
+setters into the composer builder class to allow set this values. Please see the example below.
+
+```java
+@Trait
+public class MyFirstTrait {
+    public MyFirstTrait(Context context) {
+        ...
+    }
+
+    public void MyMethod() {
+        ...
+    }
+    ...
+}
+```
+
+```java
+@Trait
+public class MyFirstTrait {
+    public MyFirstTrait(Context context) {
+        ...
+    }
+
+    public void MyMethod() {
+        ...
+    }
+    ...
+}
+```
+
+```java
+@TraitComposer(
+    traits = {
+            MyFirstTrait.class,
+            ...
+    }
+)
+public interface MyComposer { }
+```
+
+```java
+public class MyApp {
+    public void onCreate() {
+        Mara_MyComposer = new MyComposer.Builder()
+                                    .setContext(...) // This setter has been mapped
+                                    .build();        // to your constructor parameter automatically.
+    }
+}
+```
+
 
 ## License
 
