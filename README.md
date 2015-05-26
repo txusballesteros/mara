@@ -76,23 +76,9 @@ Mara_MyComposer myComposer = new Mara_MyComposer.Builder().build();
 myComposer.MyMethod();
 ```
 
-### Constructor Parameters
+## Constructor Parameters
 If your traits has constructor parameters, don't worry, Mara provides automatically
 setters into the composer builder class to allow set this values. Please see the example below.
-
-```java
-@Trait
-public class MyFirstTrait {
-    public MyFirstTrait(Context context) {
-        ...
-    }
-
-    public void MyMethod() {
-        ...
-    }
-    ...
-}
-```
 
 ```java
 @Trait
