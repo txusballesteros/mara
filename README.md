@@ -68,9 +68,10 @@ Creating your first Composer.
     }
 )
 public interface MyComposer { }
-```
+``
 
-Consuming you Composer and your injected Traits.
+Consuming your Composer and your injected Traits.
+
 ```java
 public class MyApp {
     public void onCreate() {
@@ -125,7 +126,6 @@ Imagine that you have two or more traits with one or more methods with the same 
 can solve that stage doing method mixing. When you add some traits to a composer and these have
 this condition, the compiler only generate a method and call automatically to all trait with
 this signature. Please see the example below.
-
 
 ```java
 @Trait
