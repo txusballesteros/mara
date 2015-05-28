@@ -22,40 +22,16 @@
  *
  * Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
  */
-package com.txusballesteros.mara.presentation.traits;
+package com.txusballesteros.mara.presentation.navigation;
 
-import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Intent;
 
-import com.txusballesteros.mara.R;
-import com.txusballesteros.mara.Trait;
+import com.txusballesteros.mara.presentation.detail.DetailActivity;
 
-@Trait
-public class LoadingTrait implements Initializable {
-    private Context context;
-    private View loadingView;
-
-    public LoadingTrait(Context context) {
-        this.context = context;
-    }
-
-    @Override
-    public void initialize() {
-        ViewGroup holderView = (ViewGroup)((Activity)context).findViewById(R.id.loading_place_holder);
-        loadingView = LayoutInflater.from(context)
-                                        .inflate(R.layout.trait_loading, holderView, false);
-        loadingView.setVisibility(View.GONE);
-        holderView.addView(loadingView);
-    }
-
-    public void showLoading() {
-        loadingView.setVisibility(View.VISIBLE);
-    }
-
-    public void hideLoading() {
-        loadingView.setVisibility(View.GONE);
+public final class Navigator {
+    public static void navigateToDetail(Context context) {
+        Intent navigationIntent = DetailActivity.getLaunchIntent(context);
+        context.startActivity(navigationIntent);
     }
 }

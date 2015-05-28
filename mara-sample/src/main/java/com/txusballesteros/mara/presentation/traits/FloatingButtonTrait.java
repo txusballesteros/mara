@@ -79,8 +79,10 @@ public class FloatingButtonTrait implements Initializable {
 
     @Override
     public void initialize() {
-        final ViewGroup holderView = (ViewGroup)((Activity)context).findViewById(placeHolderResourceId);
-        floatingButtonView = LayoutInflater.from(context).inflate(R.layout.trait_floating_button, holderView, false);
+        final ViewGroup holderView = (ViewGroup)((Activity)context)
+                                        .findViewById(R.id.floating_button_place_holder);
+        floatingButtonView = LayoutInflater.from(context)
+                                        .inflate(R.layout.trait_floating_button, holderView, false);
         holderView.addView(floatingButtonView);
         floatingButtonView.findViewById(R.id.floatingButton).setOnClickListener(new View.OnClickListener() {
             @Override

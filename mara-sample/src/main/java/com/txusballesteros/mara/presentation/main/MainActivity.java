@@ -65,9 +65,6 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     }
 
     private void configureTraitsComposer() {
-        composer.setToolbarPlaceHolder(R.id.toolbar_place_holder);
-        composer.setLoadingPlaceHolder(R.id.loading_place_holder);
-        composer.setFloatingButtonPlaceHolder(R.id.floating_button_place_holder);
         composer.setOnFlaotingButtonClickListener(new FloatingButtonTrait.OnFlaotingButtonClickListener() {
             @Override
             public void onFloatingButtonClick() {

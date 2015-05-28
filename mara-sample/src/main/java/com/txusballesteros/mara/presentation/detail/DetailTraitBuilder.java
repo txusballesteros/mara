@@ -30,6 +30,7 @@ import android.content.Context;
 import com.txusballesteros.mara.R;
 import com.txusballesteros.mara.TraitBuilder;
 import com.txusballesteros.mara.presentation.traits.LoadingTrait;
+import com.txusballesteros.mara.presentation.traits.ToolbarTrait;
 
 public class DetailTraitBuilder extends TraitBuilder {
     private Context context;
@@ -42,6 +43,7 @@ public class DetailTraitBuilder extends TraitBuilder {
     protected Collection<Object> onPrepareTraits() {
         Collection<Object> result = new ArrayList<>();
         result.add(new LoadingTrait(context));
+        result.add(new ToolbarTrait(context));
         return result;
     }
 }

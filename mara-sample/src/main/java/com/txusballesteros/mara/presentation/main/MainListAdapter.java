@@ -32,6 +32,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.txusballesteros.mara.R;
+import com.txusballesteros.mara.presentation.navigation.Navigator;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -71,7 +72,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     @Override
     public int getItemCount() { return dataset.size(); }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView view;
 
         public void renderText(String value) {
@@ -81,6 +82,12 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         public ViewHolder(TextView view) {
             super(view);
             this.view = view;
+            this.view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+           Navigator.navigateToDetail(view.getContext());
         }
     }
 }

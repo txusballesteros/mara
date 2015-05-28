@@ -30,4 +30,8 @@
         <item name="android:textColorPrimary">@color/brandTextColor</item>
         <item name="android:navigationBarColor">@color/brandColorDark</item>
     </style>
+
+    <style name="ToolbarTheme" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/brandTextColor</item>
+    </style>
 </resources>

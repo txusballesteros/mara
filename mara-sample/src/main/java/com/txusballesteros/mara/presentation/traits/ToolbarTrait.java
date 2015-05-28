@@ -25,6 +25,7 @@
 package com.txusballesteros.mara.presentation.traits;
 
 import android.content.Context;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -36,26 +37,42 @@ import com.txusballesteros.mara.Trait;
 @Trait
 public class ToolbarTrait implements Initializable {
     private Context context;
-    private int placeHolderResourceId;
     private Toolbar toolbar;
 
     public ToolbarTrait(Context context) {
         this.context = context;
     }
 
-    public void setToolbarPlaceHolder(int placeHolderResourceId) {
-        this.placeHolderResourceId = placeHolderResourceId;
+    public void setDisplayShowTitleEnabled(boolean value) {
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayShowTitleEnabled(value);
+    }
+
+    public void setDisplayHomeAsUpEnabled(boolean value) {
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayHomeAsUpEnabled(value);
     }
 
     @Override
     public void initialize() {
         if (context instanceof AppCompatActivity) {
             AppCompatActivity rootActivity = (AppCompatActivity)context;
-            final ViewGroup holderView = (ViewGroup)rootActivity.findViewById(placeHolderResourceId);
+
+            final ViewGroup holderView = (ViewGroup)rootActivity.findViewById(R.id.toolbar_place_holder);
             toolbar = (Toolbar)LayoutInflater
                                     .from(context).inflate(R.layout.trait_toolbar, holderView, false);
             holderView.addView(toolbar);
             rootActivity.setSupportActionBar(toolbar);
+        }
+    }
+
+    private ActionBar getActionBar() {
+        if (context instanceof AppCompatActivity) {
+            return ((AppCompatActivity)context).getSupportActionBar();
+        } else {
+            return null;
         }
     }
 }

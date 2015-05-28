@@ -24,13 +24,20 @@
  */
 package com.txusballesteros.mara.presentation.detail;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import com.txusballesteros.mara.R;
 import com.txusballesteros.mara.presentation.BaseActivity;
 
 public class DetailActivity extends BaseActivity implements DetailPresenter.View {
     private DetailPresenter presenter;
     private Mara_DetailActivityComposer composer;
+
+    public static Intent getLaunchIntent(Context context) {
+        return new Intent(context, DetailActivity.class);
+    }
 
     public DetailActivity() {
         composer = new Mara_DetailActivityComposer.Builder()
@@ -49,6 +56,19 @@ public class DetailActivity extends BaseActivity implements DetailPresenter.View
 
     private void configureTraitsComposer() {
         composer.initialize();
+        composer.setDisplayShowTitleEnabled(true);
+        composer.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
