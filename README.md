@@ -68,7 +68,7 @@ Creating your first Composer.
     }
 )
 public interface MyComposer { }
-``
+```
 
 Consuming your Composer and your injected Traits.
 
