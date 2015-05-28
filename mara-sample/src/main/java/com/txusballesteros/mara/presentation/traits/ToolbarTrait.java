@@ -43,18 +43,6 @@ public class ToolbarTrait implements Initializable {
         this.context = context;
     }
 
-    public void setDisplayShowTitleEnabled(boolean value) {
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null)
-            actionBar.setDisplayShowTitleEnabled(value);
-    }
-
-    public void setDisplayHomeAsUpEnabled(boolean value) {
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null)
-            actionBar.setDisplayHomeAsUpEnabled(value);
-    }
-
     @Override
     public void initialize() {
         if (context instanceof AppCompatActivity) {
@@ -65,6 +53,14 @@ public class ToolbarTrait implements Initializable {
                                     .from(context).inflate(R.layout.trait_toolbar, holderView, false);
             holderView.addView(toolbar);
             rootActivity.setSupportActionBar(toolbar);
+        }
+    }
+
+    public void enableHomeAsUp() {
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 

@@ -24,9 +24,9 @@
  */
 package com.txusballesteros.mara.compiler.compile;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
-public class FieldCollection extends HashMap<String, Field> implements Code {
+public class FieldCollection extends LinkedHashMap<String, Field> implements Code {
     public boolean add(Field field) {
         if (!containsKey(field.getSignature())) {
             put(field.getType().getCannonicalName(), field);

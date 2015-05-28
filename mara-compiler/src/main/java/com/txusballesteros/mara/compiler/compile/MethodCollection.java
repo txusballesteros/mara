@@ -24,9 +24,9 @@
  */
 package com.txusballesteros.mara.compiler.compile;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
-public class MethodCollection extends HashMap<String, Method> implements Code {
+public class MethodCollection extends LinkedHashMap<String, Method> implements Code {
     public void add(Method method) {
         if (!containsKey(method.getSignature())) {
             put(method.getSignature(), method);

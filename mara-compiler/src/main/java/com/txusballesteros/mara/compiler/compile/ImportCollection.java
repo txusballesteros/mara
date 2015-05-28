@@ -24,11 +24,10 @@
  */
 package com.txusballesteros.mara.compiler.compile;
 
+import java.util.LinkedHashMap;
 import com.txusballesteros.mara.compiler.extractor.Clazz;
 
-import java.util.HashMap;
-
-public class ImportCollection extends HashMap<String, Import> implements Code {
+public class ImportCollection extends LinkedHashMap<String, Import> implements Code {
     public void add(Import importValue) {
         Import finalImport = getImportCannonicalName(importValue);
         if (finalImport.getType().getCannonicalName().contains(".")) {

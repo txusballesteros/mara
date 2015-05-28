@@ -56,8 +56,7 @@ public class DetailActivity extends BaseActivity implements DetailPresenter.View
 
     private void configureTraitsComposer() {
         composer.initialize();
-        composer.setDisplayShowTitleEnabled(true);
-        composer.setDisplayHomeAsUpEnabled(true);
+        composer.enableHomeAsUp();
     }
 
     @Override
