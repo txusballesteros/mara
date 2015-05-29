@@ -7,7 +7,7 @@ Mara is a library to provide traits or composition capabilities to your Java pro
 
 But at first place allow me tell who's Mara. Mara is my little princess, she's the first of my two sons and this library is dedicated to she. I love you my princess.
 
-## Last Version
+## Latest Version
 
 [ ![Download](https://api.bintray.com/packages/txusballesteros/maven/mara/images/download.svg) ](https://bintray.com/txusballesteros/maven/mara/_latestVersion)
 
@@ -15,9 +15,17 @@ But at first place allow me tell who's Mara. Mara is my little princess, she's t
 
 Why I do this library, many times I think about how I can do reusable components for my projects and how it can be isolated from all of the rest. A month ago someone show me [Kotlin](http://kotlinlang.org/docs/reference/traits.html), a language created by JetBrains and based 100% on JVM. And I thought how I can migrate the Traits capability from Kotlin to Java. The answer to the question is this library.
 
+
+## How it Works
+
+![Logo](assets/diagram.png)
+
 ## How to use
 
-Configure the APT Plugin on your build.gradle file.
+### Configuring your project
+
+Configure the APT plugin on your build.gradle file.
+
 ```groovy
 buildscript {
     repositories {
@@ -33,6 +41,7 @@ apply plugin: 'com.neenbedankt.android-apt'
 ```
 
 Add the library dependencies.
+
 ```groovy
 dependencies {
     ...
@@ -41,14 +50,10 @@ dependencies {
 }
 ```
 
-If you are using any other libraries with AnnotationsProcessors like ButterKnife, Realm, etc... You need to set this in your build.gradle to exclude the Processor that is already packaged:
-```groovy
-packagingOptions {
-    exclude 'META-INF/services/javax.annotation.processing.Processor'
-}
-```
+### Let's play
 
 Creating your first Trait.
+
 ```java
 @Trait
 public class MyFirstTrait {
@@ -60,6 +65,7 @@ public class MyFirstTrait {
 ```
 
 Creating your first Composer.
+
 ```java
 @TraitComposer(
     traits = {
@@ -130,7 +136,7 @@ this signature. Please see the example below.
 ```java
 @Trait
 public class MyFirstTrait {
-    public void MyMethod() {
+    public void initialize() {
         ...
     }
     ...
@@ -138,7 +144,7 @@ public class MyFirstTrait {
 
 @Trait
 public class MySecondTrait {
-    public void MyMethod() {
+    public void initialize() {
         ...
     }
     ...
@@ -160,7 +166,7 @@ public interface MyComposer { }
 public class MyApp {
     public void onCreate() {
         Mara_MyComposer myComposer = new MyComposer.Builder().build();
-        myComposer.MyMethod();
+        myComposer.initialize();
     }
 }
 ```
@@ -171,7 +177,7 @@ If you want to call a method of an specific trait, you can do it. Please see the
 public class MyApp {
     public void onCreate() {
         Mara_MyComposer myComposer = new MyComposer.Builder().build();
-        myComposer.get(MyFirstTrait.class).MyMethod();
+        myComposer.get(MyFirstTrait.class).initialize();
     }
 }
 ```
