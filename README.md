@@ -5,7 +5,8 @@ Mara
 
 Mara is a library to provide traits or composition capabilities to your Java projects.
 
-But at first place allow me tell who's Mara. Mara is my little princess, she's the first of my two sons and this library is dedicated to she. I love you my princess.
+But at first place allow me tell who's Mara. Mara is my little princess, she's the first of my two
+sons and this library is dedicated to she. I love you my princess.
 
 ## Latest Version
 
@@ -13,7 +14,10 @@ But at first place allow me tell who's Mara. Mara is my little princess, she's t
 
 ## Why?
 
-Why I do this library, many times I think about how I can do reusable components for my projects and how it can be isolated from all of the rest. A month ago someone show me [Kotlin](http://kotlinlang.org/docs/reference/traits.html), a language created by JetBrains and based 100% on JVM. And I thought how I can migrate the Traits capability from Kotlin to Java. The answer to the question is this library.
+Why I do this library, many times I think about how I can do reusable components for my projects and
+how it can be isolated from all of the rest. A month ago someone show me [Kotlin](http://kotlinlang.org),
+a language created by JetBrains and based 100% on JVM. And I thought how I can migrate the Traits
+capability from Kotlin to Java. The answer to the question is this library.
 
 
 ## How it Works
