@@ -10,7 +10,7 @@ sons and this library is dedicated to she. I love you my princess.
 
 ## Latest Version
 
-[ ![Download](https://api.bintray.com/packages/txusballesteros/maven/mara/images/download.svg) ](https://bintray.com/txusballesteros/maven/mara/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/txusballesteros/maven/mara/images/download.svg) ](https://bintray.com/txusballesteros/maven/mara/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Mara-green.svg?style=flat)](https://android-arsenal.com/details/1/1949)
 
 ## Why?
 
