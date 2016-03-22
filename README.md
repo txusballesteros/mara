@@ -5,7 +5,7 @@ Mara
 
 Mara is a library to provide traits or composition capabilities to your Android or Java projects.
 
-But at first place allow me tell who's Mara. Mara is my little princess, she's the first of my two
+But at first let me tell who's Mara. Mara is my little princess, she's the first of my two
 sons and this library is dedicated to she. I love you my princess.
 
 ## Latest Version
